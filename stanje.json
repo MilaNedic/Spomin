@@ -1,0 +1,3 @@
+# shraniti moramo zacetno (ali trenutno??) plosco
+import model
+trenutno stanje = deck.nasa_plosca()
