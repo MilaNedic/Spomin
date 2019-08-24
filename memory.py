@@ -19,13 +19,23 @@ def nova_igra():
 @bottle.get('/skrita')  #želimo, da nam pokaže skrito ploščo
 def pokazi_skrito_plosco():
 
+	#get ='/skrita?tezavnost=' + str(tezavnost) + '&kliknjena='
+
+	#get = request.query[]
+
+	#<td> <a href = "/skrita?tezavnost=' + str(tezavnost) + '&kliknjena=[' + str(i) + ',' + str(j) + ']">' 
+
 	tezavnost = request.query['tezavnost']		#iz get tabele preberemo težavnost
 	tezavnost = int(tezavnost)
 	spomin = model.Memory(tezavnost)
 	skrita_plosca = spomin.skrita
 	nasa_plosca = spomin.plosca #generirana plosca, ki jo ugibamo
 
-	output_1 = '<h1>Spomin</h1> <table>'		# generiramo html tabelo na podlagi težavnosti
+	output_1 = '<style> table { border-collapse: collapse; }'
+	output_1 += 'table, td, th { border: 1px solid black; }'
+	output_1 += 'td { width: 30; }'
+	output_1 += 'td { align: center; }</style>'
+	output_1 += '<h1>Spomin</h1> <table>'		# generiramo html tabelo na podlagi težavnosti
 	output_2 = '<h1>Izbira polj</h1> <table>'   #generiramo tabelo za ugibanje polje, mesta v tej tabeli sovpadajo s polji v tabeli za skrto ploco
 
 	if tezavnost in [2, 3, 4]:
@@ -35,10 +45,10 @@ def pokazi_skrito_plosco():
 			output_1 += '<tr>'
 			output_2 += '<tr>'
 			while j < 6:
-				output_1 += '<td>' 
+				output_1 += '<td> <a href = "/skrita?' + request.query_string + '[' + str(i) + ',' + str(j) + ']">'
 				output_2 += '<td>' 
-				output_1 += skrita_plosca[i][j]	
-				output_2 += '<input type="sumbit" value=i,j>'		#tukaj želimo gumbek za izbiro polja, želimo, da sta i,j pripadajoča indeksa skrite plošče, torej predstavljata
+				output_1 += skrita_plosca[i][j] 	
+				output_2 += '<input type="button" value=' + str(i) + ',' + str(j) + '>'		#tukaj želimo gumbek za izbiro polja, želimo, da sta i,j pripadajoča indeksa skrite plošče, torej predstavljata
 				output_1 += '</td>'									#polje, ki ga želimo izbrati
 				output_2 += '</td>'									#inpu type=raido, to je krozec za označevanje, pusti samo eno možnost, mi pa rabimo izbrati toliko polj, kot je težavnost
 				j += 1
