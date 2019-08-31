@@ -10,7 +10,7 @@
 <table>
 
     <tr>
-        <td> <h4>Izberi težavnost: lahko=2, srednje=3, težko=4</td></h4>
+        <td> <h4>Izberi težavnost:</td></h4>
     </tr>
     
     <tr>
