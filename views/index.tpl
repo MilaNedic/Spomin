@@ -10,7 +10,7 @@
 <table>
 
     <tr>
-        <td> <h4>Izberi težavnost:</td></h4>
+        <td><b>Izberi težavnost:</b></td>
     </tr>
     
     <tr>
