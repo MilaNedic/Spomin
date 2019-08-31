@@ -1,2 +1,2 @@
 # Spomin
-Projektna naloga pri UVP
+Projektna naloga pri predmetu UVP.
